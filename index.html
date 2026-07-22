@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigitalZ - Premium Digital Resources</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0B0B0B;
+  --charcoal: #18181B;
+  --slate: #222222;
+  --gold: #D4AF37;
+  --champagne: #F4D06F;
+  --white: #FFFFFF;
+  --gray: #D1D5DB;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(20px);
+  background: rgba(11, 11, 11, 0.7);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+
+.logo-z {
+  color: var(--gold);
+}
+
+nav a {
+  color: var(--gray);
+  text-decoration: none;
+  margin-left: 2rem;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 60px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 2rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(11, 11, 11, 0) 100%);
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-subheading {
+  font-size: 18px;
+  color: var(--gray);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 32px;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: var(--black);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-alt {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+.btn-alt:hover {
+  background: var(--champagne);
+  border-color: var(--champagne);
+  box-shadow: 0 0 30px rgba(244, 208, 111, 0.4);
+}
+
+/* Features Section */
+.features {
+  padding: 80px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: rgba(34, 34, 34, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--gold);
+  background: rgba(34, 34, 34, 0.8);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+  transform: translateY(-8px);
+}
+
+.feature-icon {
+  font-size: 40px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Products Section */
+.products {
+  padding: 80px 2rem;
+  background: rgba(24, 24, 27, 0.3);
+}
+
+.products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.product-card {
+  background: var(--slate);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.product-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+  transform: translateY(-12px);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(244, 208, 111, 0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-weight: 700;
+  color: rgba(212, 175, 55, 0.3);
+}
+
+.product-content {
+  padding: 30px;
+}
+
+.product-content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-category {
+  font-size: 12px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.product-desc {
+  color: var(--gray);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.product-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.product-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.product-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* Free Resources */
+.free-resources {
+  padding: 80px 2rem;
+}
+
+.resources-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.resource-card {
+  background: rgba(34, 34, 34, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.resource-card:hover {
+  border-color: var(--gold);
+  background: rgba(34, 34, 34, 0.9);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+.download-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.download-btn:hover {
+  background: var(--champagne);
+  box-shadow: 0 0 20px rgba(244, 208, 111, 0.4);
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 80px 2rem;
+  background: rgba(24, 24, 27, 0.3);
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.testimonial-card {
+  background: var(--slate);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 12px;
+  padding: 30px;
+  transition: all 0.4s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+}
+
+.stars {
+  color: var(--gold);
+  margin-bottom: 15px;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.testimonial-text {
+  color: var(--gray);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.author {
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 100px 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(11, 11, 11, 0) 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.cta-content h2 {
+  font-size: 52px;
+  margin-bottom: 30px;
+}
+
+.cta-subtext {
+  color: var(--gray);
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+footer {
+  padding: 60px 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(11, 11, 11, 0.5);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h4 {
+  color: var(--gold);
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--gray);
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 13px;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  padding-top: 30px;
+  text-align: center;
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.newsletter {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 10px 15px;
+  background: rgba(34, 34, 34, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  color: var(--white);
+  font-size: 13px;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.newsletter button:hover {
+  background: var(--champagne);
+}
+
+/* Z Monogram */
+.z-mark {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+.z-mark:hover {
+  opacity: 1;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 768px) {
+  nav { flex-direction: column; gap: 15px; }
+  nav a { margin-left: 0; }
+  .hero-content h1 { font-size: 40px; }
+  .section-heading { font-size: 36px; }
+  .cta-content h2 { font-size: 36px; }
+  .hero-buttons { flex-direction: column; }
+  .cta-buttons { flex-direction: column; }
+  .z-mark { bottom: 20px; right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">DIGITAL<span class="logo-z">Z</span></div>
+  <div style="display: flex;">
+    <a href="#shop">Shop</a>
+    <a href="#free">Free Resources</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Premium Digital Tools for Smarter Work</h1>
+    <p class="hero-subheading">Discover AI resources, productivity templates, cybersecurity guides, and digital products designed to help you save time, build skills, and work more efficiently.</p>
+    <div class="hero-buttons">
+      <button class="btn">Explore the Collection</button>
+      <button class="btn btn-alt">Get Free Resources</button>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <h2 class="section-heading">Why Choose DigitalZ</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⭐</div>
+      <h3>Save Hours Every Week</h3>
+      <p>Instantly access templates and tools that eliminate repetitive work. Get more done in less time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3>Learn AI With Confidence</h3>
+      <p>Master prompt engineering and AI integration with our comprehensive, practical guides.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Practical Cybersecurity</h3>
+      <p>Essential security guides and resources to protect your digital assets and data.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Instant Digital Downloads</h3>
+      <p>Start using your resources immediately. No waiting, no complexity. Pure value delivered instantly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section class="products" id="shop">
+  <div class="products-container">
+    <h2 class="section-heading">Featured Products</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">AI</div>
+        <div class="product-content">
+          <div class="product-category">AI Prompt Packs</div>
+          <h3>500+ Advanced AI Prompts</h3>
+          <p class="product-desc">Professional prompt templates for ChatGPT, Claude, and other AI tools.</p>
+          <div class="product-price">$29</div>
+          <button class="product-btn">View Product</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">📋</div>
+        <div class="product-content">
+          <div class="product-category">Productivity Templates</div>
+          <h3>Complete Office Suite</h3>
+          <p class="product-desc">Notion, Excel, and Google Sheets templates for every workflow.</p>
+          <div class="product-price">$39</div>
+          <button class="product-btn">View Product</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">📅</div>
+        <div class="product-content">
+          <div class="product-category">Digital Planners</div>
+          <h3>Premium Planning System</h3>
+          <p class="product-desc">Goal-setting, habit tracking, and annual planning tools.</p>
+          <div class="product-price">$24</div>
+          <button class="product-btn">View Product</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">🔐</div>
+        <div class="product-content">
+          <div class="product-category">Cybersecurity Guides</div>
+          <h3>Security Fundamentals</h3>
+          <p class="product-desc">Comprehensive guides to encryption, threat detection, and best practices.</p>
+          <div class="product-price">$34</div>
+          <button class="product-btn">View Product</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">💼</div>
+        <div class="product-content">
+          <div class="product-category">Business Resources</div>
+          <h3>Startup Toolkit</h3>
+          <p class="product-desc">Business plans, financial templates, and marketing frameworks.</p>
+          <div class="product-price">$44</div>
+          <button class="product-btn">View Product</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">📚</div>
+        <div class="product-content">
+          <div class="product-category">Learning Materials</div>
+          <h3>Professional Development</h3>
+          <p class="product-desc">Courses and guides for tech, design, and business skills.</p>
+          <div class="product-price">$49</div>
+          <button class="product-btn">View Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Free Resources -->
+<section class="free-resources" id="free">
+  <div class="resources-container">
+    <h2 class="section-heading">Experience the Quality Before You Buy</h2>
+    <p style="text-align: center; color: var(--gray); margin-bottom: 50px;">Try our free resources to see why thousands choose DigitalZ.</p>
+    <div class="resources-grid">
+      <div class="resource-card">
+        <h3 style="font-size: 18px;">Free AI Prompt Guide</h3>
+        <p style="color: var(--gray); margin: 15px 0;">10 essential prompts to get started with AI.</p>
+        <button class="download-btn">Download Free</button>
+      </div>
+      <div class="resource-card">
+        <h3 style="font-size: 18px;">Productivity Checklist</h3>
+        <p style="color: var(--gray); margin: 15px 0;">Get your workflow organized in one afternoon.</p>
+        <button class="download-btn">Download Free</button>
+      </div>
+      <div class="resource-card">
+        <h3 style="font-size: 18px;">Security Basics PDF</h3>
+        <p style="color: var(--gray); margin: 15px 0;">Protect yourself online: essential security tips.</p>
+        <button class="download-btn">Download Free</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <div class="testimonials-container">
+    <h2 class="section-heading">What Our Customers Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"DigitalZ templates saved me 15 hours per week. The quality is exceptional and exactly what I was looking for."</p>
+        <div class="author">Sarah Chen • Product Manager</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The AI prompts are game-changing. I've recommended DigitalZ to my entire team. Worth every penny."</p>
+        <div class="author">Marcus Johnson • Consultant</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Finally, premium resources that don't require a subscription. The cybersecurity guide is incredibly thorough."</p>
+        <div class="author">Elena Rodriguez • Security Analyst</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Invest in Your Digital Future</h2>
+    <p class="cta-subtext">Discover premium digital resources designed to save time, build skills, and simplify technology.</p>
+    <div class="cta-buttons">
+      <button class="btn">Explore Products</button>
+      <button class="btn btn-alt">Start With Free Resources</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#">All Products</a>
+      <a href="#">Free Resources</a>
+      <a href="#">Bundles</a>
+      <a href="#">New Releases</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About DigitalZ</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">FAQs</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p style="font-size: 13px; color: var(--gray); margin-bottom: 15px;">Get tips and new releases delivered to your inbox.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Email address">
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 DigitalZ. All rights reserved. | Privacy Policy | Terms of Service</p>
+  </div>
+</footer>
+
+<!-- Z Monogram -->
+<div class="z-mark">Z</div>
+
+</body>
+</html>
