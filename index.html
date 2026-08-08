@@ -417,9 +417,15 @@ nav a:hover {
   border-radius:6px;
 }
 
+/* Delivery & Refund policy */
+.policy { max-width:720px; margin-top:8px; }
+.policy h4 { font-size:14px; color:var(--gold); margin:6px 0; }
+.policy-text { font-size:13px; color:var(--gray); margin:0; padding:8px; background:rgba(255,255,255,0.02); border-radius:6px; }
+
 @media (max-width:480px){
   .payment-svg { width:36px; }
   .security-text { font-size:12px; }
+  .policy-text { font-size:12px; }
 }
 
 </style>
@@ -1057,6 +1063,12 @@ Premium AI, cybersecurity, and productivity resources.
     <p class="security-text">Secure checkout — 128‑bit SSL encrypted via PayPal. Your payment details are processed securely.</p>
   </li>
 </ul>
+
+<!-- Delivery & Refund Policy (added) -->
+<div class="policy" aria-labelledby="policy-heading">
+  <h4 id="policy-heading">Delivery & Refund Policy</h4>
+  <p class="policy-text">All purchases are delivered instantly as digital downloads via Payhip. After payment you'll receive a download link from Payhip to access your files immediately. Because these are digital goods and are delivered instantly, we generally do not offer refunds once a download has been provided. If you experience technical issues accessing your purchase or believe you received the wrong item, contact us via our Payhip store at <a href="https://payhip.com/Digitailz" target="_blank" rel="noopener noreferrer">https://payhip.com/Digitailz</a> within 14 days and we'll help resolve the issue. Refunds may be granted in exceptional cases at our discretion.</p>
+</div>
 
 <p style="margin-top:12px;color:var(--gray);font-size:13px;">© DigitalZ</p>
 
